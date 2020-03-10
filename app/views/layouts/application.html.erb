@@ -11,48 +11,66 @@
 
   <body>
     <div class="header">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-1">
-            <h3><%= link_to 'NoBookNoLife', root_path %></h3>
+      <nav class="navbar navbar-default header-navbar">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-1">
+              <h1><%= link_to 'NoBookNoLife', root_path, class:"header-menu-logo" %></h1>
+            </div>
+            <div>
+              <ul class="nav navbar-nav navbar-right header-menu">
+                <% if user_signed_in? %>
+                  <div class="col-xs-2">
+                    <li>
+                      <span><%= link_to 'マイページ', user_path, class:"header-menu-item"  %></span>
+                    </li>
+                  </div>
+                  <div class="col-xs-3">
+                    <li>
+                      <span><%= link_to 'プロフィール編集', edit_user_registration_path, class:"header-menu-item"  %></span>
+                    </li>
+                  </div>
+                  <div class="col-xs-2">
+                    <li>
+                      <span><%= link_to '本棚', reading_books_path, class:"header-menu-item"  %></span>
+                    </li>
+                  </div>
+                  <div class="col-xs-4">
+                    <li>
+                      <span><%= link_to 'ログアウト', destroy_user_session_path, class:"header-menu-item"  %></span>
+                    </li>
+                  </div>
+                <% else %>
+                  <div class="col-xs-4">
+                    <li>
+                      <span><%= link_to 'アバウト', homes_about_path, class:"header-menu-item"  %></span>
+                    </li>
+                  </div>
+                  <div class="col-xs-4">
+                    <li>
+                      <span><%= link_to '新規登録', new_user_registration_path, class:"header-menu-item"  %></span>
+                    </li>
+                  </div>
+                  <div class="col-xs-4">
+                    <li>
+                      <span><%= link_to 'ログイン', user_session_path, class:"header-menu-item"  %></span>
+                    </li>
+                  </div>
+                <% end %>
+              </ul>
+            </div>
           </div>
-          <ul class="header-menu">
-            <li></li>
 
-            <% if user_signed_in? %>
-              <div class="col-xs-2">
-                <span><%= link_to 'マイページ', user_path %></span>
-              </div>
-              <div class="col-xs-2">
-                <span><%= link_to 'プロフィール編集', edit_user_registration_path %></span>
-              </div>
-              <div class="col-xs-2">
-                <span><%= link_to '本棚', reading_books_path %></span>
-              </div>
-              <div class="col-xs-2">
-                <span><%= link_to 'ログアウト', destroy_user_session_path %></span>
-              </div>
-            <% else %>
-              <div class="col-xs-2">
-                <span><%= link_to 'アバウト', books_about_path %></span>
-              </div>
-              <div class="col-xs-2">
-                <span><%= link_to '新規登録', new_user_registration_path %></span>
-              </div>
-              <div class="col-xs-2">
-                <span><%= link_to 'ログイン', user_session_path %></span>
-              </div>
-            <% end %>
-          </ul>
+          <div class="row">
+            <div class="search-bar navbar-text navbar-right">
+              <%= form_with url: search_path, local: true, method: :post do |f| %>
+                <%= f.text_field :search %>
+                <%= f.submit "検索" %>
+              <% end %>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="search-bar">
-
-
-
-        </div>
-      </div>
+      </nav>
     </div>
     <%= yield %>
   </body>

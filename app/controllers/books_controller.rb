@@ -4,4 +4,8 @@ class BooksController < ApplicationController
 
   def show
   end
+
+  def search
+  	redirect_to books_path
+  end
 end

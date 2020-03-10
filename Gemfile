@@ -76,9 +76,8 @@ gem 'sweetalert-rails'
 gem 'devise'
 
 # bootstrap使用
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
-
 
 # デバッグ用
 gem 'pry-byebug'
