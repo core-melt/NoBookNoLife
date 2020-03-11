@@ -22,7 +22,7 @@
                 <% if user_signed_in? %>
                   <div class="col-xs-2">
                     <li>
-                      <span><%= link_to 'マイページ', user_path, class:"header-menu-item"  %></span>
+                      <span><%= link_to 'マイページ', user_path(current_user.id), class:"header-menu-item"  %></span>
                     </li>
                   </div>
                   <div class="col-xs-3">
@@ -37,7 +37,7 @@
                   </div>
                   <div class="col-xs-4">
                     <li>
-                      <span><%= link_to 'ログアウト', destroy_user_session_path, class:"header-menu-item"  %></span>
+                      <span><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class:"header-menu-item"  %></span>
                     </li>
                   </div>
                 <% else %>

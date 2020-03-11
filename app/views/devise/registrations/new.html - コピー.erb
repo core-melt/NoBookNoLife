@@ -1,0 +1,89 @@
+<div class="regstarations-new-form">
+  <div class="input-user-info">
+    <div class="container">
+      <div class="input-user-info-title">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>ようこそNoBookNoLifeへ</h2>
+          </div>
+        </div>
+      </div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource%>
+        <div class="input-user-info-body">
+          <table class="input-user-info-table">
+            <tbody>
+              <tr>
+                <td>
+                  <p>以下項目を必ずご記入してください。</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="row">
+                      <div class="field nickname-field">
+                        <div class="col-xs-6">
+                          <p><span>ニックネーム</span></p>
+                        </div>
+                        <div class="col-xs-6">
+                          <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+                        </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="row">
+                    <div class="field email-field">
+                      <div class="col-xs-6">
+                        <p><span>メールアドレス</span></p>
+                      </div>
+                      <div class="col-xs-6">
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="row">
+                    <div class="field password-field">
+                      <div class="col-xs-6">
+                        <p><span>パスワード</span></p>
+
+                      </div>
+                      <div class="col-xs-6">
+                        <%= f.password_field :password, autocomplete: "new-password" %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> 文字以上入力してください)</em>
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="actions">
+                    <%= f.submit "新規登録", class:"btn btn-warning btn-lg" %>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="shared-links login-link">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

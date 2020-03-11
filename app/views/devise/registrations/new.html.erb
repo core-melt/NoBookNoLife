@@ -1,92 +1,66 @@
-<div class="regstarations_new_form">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h2>ようこそNoBookNoLifeへ</h2>
+<div class="regstarations-new-form">
+  <div class="input-user-info">
+    <div class="container">
+      <div class="input-user-info-title">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>ようこそNoBookNoLifeへ</h2>
+          </div>
+        </div>
       </div>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource%>
+        <div class="input-user-info-body">
+
+          <p>以下項目を必ずご記入してください。</p>
+
+          <div class="row">
+              <div class="field">
+                <div class="col-xs-4">
+                  <p><span>ニックネーム</span></p>
+                </div>
+                <div class="col-xs-8">
+                  <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <div class="col-xs-4">
+                <p><span>メールアドレス</span></p>
+              </div>
+              <div class="col-xs-8">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"user-email" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <div class="col-xs-4">
+                <p><span>パスワード</span></p>
+              </div>
+              <div class="col-xs-8">
+                <%= f.password_field :password, autocomplete: "new-password", class:"user-password" %>
+              </div>
+            </div>
+          </div>
+
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上入力してください)</em>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "新規登録", class:"btn btn-warning btn-lg" %>
+          </div>
+
+          <div class="shared-links login-link">
+            <%= render "devise/shared/links" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-      <table class="user-input new-user-input">
-        <tbody>
-          <tr>
-            <td>
-              <p>以下項目を必ずご記入してください。</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="row">
-                  <div class="field">
-                    <div class="col-xs-5">
-                      <p>ニックネーム</p>
-                    </div>
-                    <div class="col-xs-7">
-                      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
-                    </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="row">
-                <div class="field">
-                  <div class="col-xs-5">
-                    <p>メールアドレス</p>
-                  </div>
-                  <div class="col-xs-7">
-                    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="row">
-                <div class="field">
-                  <div class="col-xs-5">
-                    <p>パスワード</p><br/>
-                    <% if @minimum_password_length %>
-                      <em>(<%= @minimum_password_length %> characters minimum)</em>
-                    <% end %>
-                  </div>
-                  <div class="col-xs-7">
-                    <%= f.password_field :password, autocomplete: "new-password" %>
-                  </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="row">
-                <div class="col-xs-12">
-                    <div class="actions">
-                      <%= f.submit "Sign up", class:"btn btn-warning" %>
-                    </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-
-
-
-
-
-
-      <!--   <div class="field">
-          <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-        </div> -->
-
-    <% end %>
-    <%= render "devise/shared/links" %>
-
   </div>
 </div>

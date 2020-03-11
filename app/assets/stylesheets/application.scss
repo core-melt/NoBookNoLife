@@ -22,6 +22,10 @@
  *
  */
 h1{
+	font-size: 26px;
+}
+
+h2{
 	font-size: 24px;
 }
 
@@ -29,6 +33,13 @@ span{
 	font-size: 18px;
 }
 
+p{
+	font-size: 14px;
+}
+
+body{
+	width: 100%;
+}
 
 /*
  *
@@ -53,7 +64,6 @@ span{
 	background-color: #82FF96;
 }
 
-
 /* ヘッダーのリンク部位置調整 */
 .header-menu{
 	padding: 15px;
@@ -63,20 +73,84 @@ span{
 	vertical-align: top;
 }
 
+/* Bootstrap navbarで自動で50px取得しているので修正 */
+.navbar{
+	margin-bottom: 0;
+}
 
 
 
-/* 新規登録 */
-.regstarations_new_form{
-	margin: 0 auto;
-	width: 50%;
-	border-style: solid;
-	border-width: 1px;
+/*
+ *
+ * 新規登録、ログイン共通
+ *
+ */
+.regstarations-new-form, .sessions-new-form{
+	width: 100%;
+	margin-top: 30px;
 
-	.regstarations_new_form{
-			p{
-			font-size: 18px;
-		}
+	em{
+		font-size: 14px;
 	}
 
+	/* ユーザー入力項目共通設定 */
+	.input-user-info{
+		width: 50%;
+		border-style: solid;
+		border-width: 1px;
+		margin: 0 auto;
+		position: relative;	/* リンクの右下配置のために基準点として宣言 */
+
+		.container{
+			width: 100%;
+		}
+
+		.input-user-info-title{
+			text-align: center;
+		}
+
+		.input-user-info-body{
+			width: 80%;
+			margin: 20px auto;
+
+			.user-email{
+				width: 80%;
+			}
+
+			.user-password{
+				width: 70%;
+			}
+
+			.btn{
+				width: 60%;
+			}
+
+			.actions{
+				margin: 30px 0;
+				text-align: center;
+			}
+		}
+
+		.input-user-info-table{
+			margin: 0 auto;
+		}
+
+		.shared-links{
+			position: absolute;
+			bottom: -10px;
+			right: 5px;
+		}
+	}
 }
+
+
+
+/*
+ *
+ * アバウト
+ *
+ */
+
+
+
+ 
