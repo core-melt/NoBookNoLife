@@ -1,0 +1,32 @@
+<h2>ユーザー情報</h2>
+<div class="user-profile">
+	<%= user.nickname %><br/>
+	<%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %><br/>
+
+	<%= link_to 'プロフィール編集', edit_user_registration_path, class:"btn btn-warning" %>
+
+	<h4>リンク</h4>
+	<table class="table table-striped">
+	  <tbody>
+	      <tr>
+	          <td><a href="" class="reading-books">本棚</a></td>
+	      </tr>
+	      <tr>
+	          <td><a href="" class="follows">フォロー</a></td>
+		  </tr>
+	      <tr>
+	          <td><a href="" class="followers">フォロワー</a></td>
+		  </tr>
+	      <tr>
+	          <td><a href="" class="comment">コメント</a></td>
+	      </tr>
+	  </tbody>
+	</table>
+
+	<h4>自己紹介</h4>
+	<%= user.introduction %>
+
+</div>
+
+
+

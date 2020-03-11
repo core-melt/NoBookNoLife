@@ -41,44 +41,51 @@ body{
 	width: 100%;
 }
 
+input{
+	color: #000;
+}
+
+
+
 /*
  *
  * ヘッダ設定
  *
  */
 /* ヘッダーのリンク部設定 */
-.header-menu-logo, .header-menu-item{
-	color: #ffffff;
-	/* !importantで最優先化 */
-	text-decoration: none !important;
+.header{
+	.header-menu-logo, .header-menu-item{
+		color: #ffffff;
+		/* !importantで最優先化 */
+		text-decoration: none !important;
 
-	/* ヘッダーのリンクの色が変わらないように設定 */
-	&:link{ color: #ffffff; }
-	&:visited{ color: #ffffff; }
-	&:hover{ color: #ffffff; }
-	&:active{ color: #ffffff; }
+		/* ヘッダーのリンクの色が変わらないように設定 */
+		&:link{ color: #ffffff; }
+		&:visited{ color: #ffffff; }
+		&:hover{ color: #ffffff; }
+		&:active{ color: #ffffff; }
+	}
+
+	/* ヘッダーの背景色設定 */
+	.header-navbar{
+		background-color: #82FF96;
+	}
+
+	/* ヘッダーのリンク部位置調整 */
+	.header-menu{
+		padding: 15px;
+		width: 35%;
+	}
+
+	.header-menu-logo{
+		vertical-align: top;
+	}
+
+	/* Bootstrap navbarで自動で50px取得しているので修正 */
+	.navbar{
+		margin-bottom: 0;
+	}
 }
-
-/* ヘッダーの背景色設定 */
-.header-navbar{
-	background-color: #82FF96;
-}
-
-/* ヘッダーのリンク部位置調整 */
-.header-menu{
-	padding: 15px;
-	width: 35%;
-}
-
-.header-menu-logo{
-	vertical-align: top;
-}
-
-/* Bootstrap navbarで自動で50px取得しているので修正 */
-.navbar{
-	margin-bottom: 0;
-}
-
 
 
 /*
@@ -154,3 +161,12 @@ body{
 
 
 
+/*
+ *
+ * _userinfo
+ *
+ */
+.user-profile{
+		border-style: solid;
+		border-width: 1px;
+}
