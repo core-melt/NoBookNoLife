@@ -1,2 +1,28 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="book-show-form">
+	<div class="container">
+		<div class="row">
+			<% if @response["totalItems"] == 0 %>
+				<h2 class="font-bold">検索条件「ISBN:<%= @search %>」と一致する書籍はありませんでした</h2>
+			<% else %>
+				<div class="book-sidebar">
+					<div class="col-xs-12">
+						<h2 class="font-bold"><%= @response["items"][0]["volumeInfo"]["title"] %></h2>
+					</div>
+					<div class="col-xs-3 border-solid">
+						<div class="book-sidebar">
+							<%= image_tag @response["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"] %>
+							<%= render 'books/book_status', reading: @reading, book_id: @book.id %>
+
+							<h4 class="font-bold">概要</h4>
+							<%= @response["items"][0]["volumeInfo"]["description"] %>
+						</div>
+					</div>
+
+					<div class="col-xs-9">
+
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

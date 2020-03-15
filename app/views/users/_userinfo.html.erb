@@ -1,9 +1,9 @@
 <h2>ユーザー情報</h2>
-<div class="user-profile">
+<div class="user-profile border-solid">
 	<%= user.nickname %><br/>
 	<%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %><br/>
 
-	<%= link_to 'プロフィール編集', edit_user_registration_path, class:"btn btn-warning" %>
+	<%= link_to 'プロフィール編集', edit_user_path, class:"btn btn-warning" %>
 
 	<h4>リンク</h4>
 	<table class="table table-striped">

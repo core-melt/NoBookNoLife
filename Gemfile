@@ -81,3 +81,8 @@ gem 'jquery-rails'
 
 # デバッグ用
 gem 'pry-byebug'
+
+# ネットワーク通信を取り扱う
+gem 'httpclient'
+
+

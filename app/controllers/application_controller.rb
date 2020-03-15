@@ -11,11 +11,19 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  # ISBNによる検索
+  def get_json_from_isbn(isbn)
+    client = HTTPClient.new
+    request =  client.get('https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn)
+    response = JSON.parse(request.body)
+    return response
+  end
+
+
   protected
   def configure_permitted_parameters
-    added_attrs = [ :email, :nickname, :password, :profile_image_id, :introduction, :sex, :spoiler_prevention ]
+    added_attrs = [ :email, :nickname, :password, :spoiler_prevention ]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: added_attrs
   end
 end

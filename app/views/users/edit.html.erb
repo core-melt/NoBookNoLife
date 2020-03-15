@@ -1,0 +1,114 @@
+<div class="regstarations-new-form">
+  <div class="input-user-info">
+    <div class="container">
+      <div class="input-user-info-title">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>プロフィール編集</h2>
+          </div>
+        </div>
+      </div>
+
+      <%= form_for(@user, url: user_path(@user.id)) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <div class="input-user-info-body">
+
+          <div class="row">
+            <div class="field">
+              <div class="col-xs-4">
+                <p><span>ニックネーム</span></p>
+              </div>
+              <div class="col-xs-8">
+                <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <%= f.attachment_field :profile_image, class: "profile_image" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <div class="col-xs-4">
+                <p><span>自己紹介</span></p>
+              </div>
+              <div class="col-xs-8">
+                <%= f.text_area :introduction, autofocus: true, autocomplete: "introduction" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <div class="col-xs-4">
+                <p><span>メールアドレス</span></p>
+              </div>
+              <div class="col-xs-8">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"user-email" %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <div class="col-xs-4">
+                <p><span>パスワード</span></p>
+              </div>
+              <div class="col-xs-8">
+                <%= f.password_field :password, autocomplete: "new-password", class:"new-password" %>
+              </div>
+            </div>
+          </div>
+
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上入力してください)</em>
+          <% end %>
+
+
+          <div class="row">
+            <div class="field">
+              <div class="col-xs-4">
+                <p><span>ネタばれ防止機能</span></p>
+              </div>
+              <div class="col-xs-8">
+                <%= f.check_box :spoiler_prevention, class:"spoiler_prevention" %>
+              </div>
+            </div>
+          </div>
+
+
+
+<!--           <div class="row">
+            <div class="field">
+              <div class="col-xs-4">
+                <p><span>現在のパスワード</span></p>
+              </div>
+              <div class="col-xs-8">
+                <%= f.password_field :current_password, autocomplete: "current-password" %>
+              </div>
+            </div>
+          </div>
+
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上入力してください)</em>
+          <% end %>
+ -->
+          <div class="row">
+            <div class="field">
+              <div class="col-xs-6">
+                <%= f.submit "更新", class:"btn btn-warning btn-lg" %>
+              </div>
+              <div class="col-xs-6">
+                <%= link_to "戻る", :back, class:"btn btn-info btn-lg"  %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

@@ -45,6 +45,16 @@ input{
 	color: #000;
 }
 
+/* 枠線設定 */
+.border-solid{
+	border-style: inset;
+	/*border-width: 1px;*/
+}
+
+/* 文字の太さを設定 */
+.font-bold{
+	font-weight: bold;
+}
 
 
 /*
@@ -163,10 +173,35 @@ input{
 
 /*
  *
- * _userinfo
+ * Book#show
  *
  */
-.user-profile{
-		border-style: solid;
-		border-width: 1px;
+.book-show-form{
+	margin-bottom: 30px;
+
+	.book-sidebar{
+		margin: 10px 0;
+	}
+}
+
+.book-status{
+	margin: 20px 0;
+}
+
+/*
+ *
+ * _book-status
+ *
+ */
+.book-status-form{
+	margin: 20px 0;
+
+	#book-status{
+		width: 100%;
+	}
+
+	.btn{
+		width: 100%;
+		text-align: left;
+	}
 }

@@ -60,7 +60,22 @@
                 <p><span>パスワード</span></p>
               </div>
               <div class="col-xs-8">
-                <%= f.password_field :password, autocomplete: "new-password", class:"user-password" %>
+                <%= f.password_field :password, autocomplete: "new-password", class:"new-password" %>
+              </div>
+            </div>
+          </div>
+
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上入力してください)</em>
+          <% end %>
+          
+          <div class="row">
+            <div class="field">
+              <div class="col-xs-4">
+                <p><span>現在のパスワード</span></p>
+              </div>
+              <div class="col-xs-8">
+                <%= f.password_field :current_password, autocomplete: "current-password" %>
               </div>
             </div>
           </div>

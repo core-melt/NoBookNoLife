@@ -1,0 +1,70 @@
+<!-- 読書ステータスを非同期で更新 -->
+<div class="book-status-form">
+	<h4 class="font-bold">本の登録</h4>
+		<div id="book-status">
+          	<% if @reading[:id].nil? %>
+			    <%= link_to '読了に登録', reading_books_path(reading_status: 4, book_id: book_id), method: :post, remote: true, class: "btn btn-default book-status-item" %>
+          	<% else %>
+          		<% if @reading[:readed_status] %>
+          			<!-- 読了の場合 -->
+					<p class="btn btn-warning book-status-item">読了</p>
+          		<% else %>
+          			<!-- 未読了の場合 -->
+				    <%= link_to '読了に登録', reading_book_path(@reading[:id], reading_status: 4, book_id: book_id), method: :put, remote: true, class: "btn btn-default book-status-item" %>
+          		<% end %>
+          	<% end %>
+
+
+          	<% if @reading[:id].nil? %>
+			    <%= link_to '読んでいる本に登録', reading_books_path(reading_status: 3, book_id: book_id), method: :post, remote: true, class: "btn btn-default book-status-item" %>
+          	<% else %>
+          		<% if @reading[:reading_status] == 3 %>
+          			<!-- 読了の場合 -->
+          			<% if @reading[:readed_status] %>
+					    <%= link_to '読んでいる本から解除', reading_book_path(@reading[:id], reading_status: 0, book_id: book_id), method: :put, remote: true, class: "btn btn-warning book-status-item" %>
+					<% else %>
+						<%= link_to '読んでいる本から解除', reading_book_path(@reading[:id], reading_status: 3, book_id: book_id), method: :delete, remote: true, class: "btn btn-warning book-status-item" %>
+
+					<% end %>
+          		<% else %>
+          			<!-- 未読了の場合 -->
+				    <%= link_to '読んでいる本に登録', reading_book_path(@reading[:id], reading_status: 3, book_id: book_id), method: :put, remote: true, class: "btn btn-default book-status-item" %>
+          		<% end %>
+          	<% end %>
+
+			<% if @reading[:id].nil? %>
+				<%= link_to '積読本に登録', reading_books_path(reading_status: 2, book_id: book_id), method: :post, remote: true, class: "btn btn-default book-status-item" %>
+			<% else %>
+				<% if @reading[:reading_status] == 2 %>
+					<!-- 読了の場合 -->
+					<% if @reading[:readed_status] %>
+					    <%= link_to '積読本から解除', reading_book_path(@reading[:id], reading_status: 0, book_id: book_id), method: :put, remote: true, class: "btn btn-warning book-status-item" %>
+					<% else %>
+						<%= link_to '積読本から解除', reading_book_path(@reading[:id], reading_status: 2, book_id: book_id), method: :delete, remote: true, class: "btn btn-warning book-status-item" %>
+					<% end %>
+				<% else %>
+					<!-- 未読了の場合 -->
+				    <%= link_to '積読本に登録', reading_book_path(@reading[:id], reading_status: 2, book_id: book_id), method: :put, remote: true, class: "btn btn-default book-status-item" %>
+				<% end %>
+			<% end %>
+
+			<% if @reading[:id].nil? %>
+				<%= link_to '読みたい本に登録', reading_books_path(reading_status: 1, book_id: book_id), method: :post, remote: true, class: "btn btn-default book-status-item" %>
+			<% else %>
+				<% if @reading[:reading_status] == 1 %>
+					<!-- 読了の場合 -->
+					<% if @reading[:readed_status] %>
+					    <%= link_to '読みたい本から解除', reading_book_path(@reading[:id], reading_status: 0, book_id: book_id), method: :put, remote: true, class: "btn btn-warning book-status-item" %>
+					<% else %>
+						<%= link_to '読みたい本から解除', reading_book_path(@reading[:id], reading_status: 1, book_id: book_id), method: :delete, remote: true, class: "btn btn-warning book-status-item" %>
+					<% end %>
+				<% else %>
+					<!-- 未読了の場合 -->
+			    	<%= link_to '読みたい本に登録', reading_book_path(@reading[:id], reading_status: 1, book_id: book_id), method: :put, remote: true, class: "btn btn-default book-status-item" %>
+				<% end %>
+			<% end %>
+		</div>
+</div>
+
+
+
