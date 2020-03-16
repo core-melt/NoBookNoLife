@@ -1,0 +1,20 @@
+<!-- コメントを非同期で更新 -->
+<div class="book-comments-form">
+	<%= form_with(url: books_book_comments_path, remote: true) do |f| %>
+		<div class="row border-inset">
+			<%= f.hidden_field :book_id, :value => book.id %>
+			<%= f.text_area :comment, class: "col-xs-12", style: "height: 100px" %>
+			<%= f.submit "送信", class: "btn btn-default pull-right" %>
+		</div>
+
+		<% unless comments.blank? %>
+			<% comments.each do |c| %>
+				<div class="border-inset">
+					<%= c[:comment] %>
+					<%= f.text_area :child_comment, class: "col-xs-12", style: "height: 100px" %>
+					<%= f.submit "送信", class: "btn btn-default pull-right" %>
+				</div>
+			<% end %>
+		<% end %>
+	<% end %>
+</div>

@@ -1,4 +1,4 @@
-class BooksController < ApplicationController
+class BooksNicesController < ApplicationController
   before_action :authenticate_user!
   def create
 

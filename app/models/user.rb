@@ -25,4 +25,24 @@ class User < ApplicationRecord
   #through: :reverses_of_relationshipで「中間テーブルはreverses_of_relationship」
   #source: :userで「出口はuser_idね！それでuserテーブルから自分をフォローしているuserをとってきてね！」と設定
   has_many :followers, through: :reverse_of_follows, source: :user
+
+
+
+   #フォローしようとしている other_user が自分自身ではないかを検証しています
+    def follow(other_user)
+      unless self == other_user
+        self.follows.find_or_create_by(follow_id: other_user.id)
+      end
+    end
+
+    #フォローがあればアンフォロー
+    def unfollow(other_user)
+      follow = self.follows.find_by(follow_id: other_user.id)
+      follow.destroy if follow
+    end
+
+    #self.followings によりフォローしている User 達を取得し、include?(other_user) によって other_user が含まれていないかを確認
+    def following?(other_user)
+      self.followings.include?(other_user)
+    end
 end

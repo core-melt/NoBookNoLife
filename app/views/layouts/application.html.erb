@@ -62,11 +62,13 @@
           </div>
 
           <div class="row">
-            <div class="search-bar navbar-text navbar-right">
-              <%= form_with url: books_path, local: true, method: :get do |f| %>
-                <%= f.text_field :search %>
-                <%= f.submit "検索" %>
-              <% end %>
+            <div class="col-xs-11">
+              <div class="search-bar navbar-text navbar-right">
+                <%= form_with url: books_path, local: true, method: :get do |f| %>
+                  <%= f.text_field :search %>
+                  <%= f.submit "検索" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
