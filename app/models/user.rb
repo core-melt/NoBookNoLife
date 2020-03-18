@@ -11,38 +11,24 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :nices, dependent: :destroy
 
+
   # follow用
-  has_many :follows, dependent: :destroy
-  #through: :relationships 「中間テーブルはrelationships」設定
-  #source: :follow　relationshipsテーブルのfollow_idを参考にして、followingsモデルにアクセス」
-  #user.followings と打つだけで、user が中間テーブル relationships を取得し、その1つ1つの relationship のfollow_idから、「フォローしている User 達」を取得しています
-  has_many :followings, through: :relationships, source: :follow
+  has_many :follower, class_name: "follows", foreign_key: "follower_id", dependent: :destroy # フォロー取得
+  has_many :followed, class_name: "follows", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
+  has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
+  has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
-  #フォロワー（フォローされているuser達）をとってくるための記述
-  #has_many :relaitonshipsの「逆方向」意味
-  #foreign_key: 'follow_id' elaitonshipsテーブルにアクセスする時、follow_idを入口」
-  has_many :reverse_of_follows, class_name: 'follows', foreign_key: 'follow_id'
-  #through: :reverses_of_relationshipで「中間テーブルはreverses_of_relationship」
-  #source: :userで「出口はuser_idね！それでuserテーブルから自分をフォローしているuserをとってきてね！」と設定
-  has_many :followers, through: :reverse_of_follows, source: :user
+  def follow(user_id)
+    follower.create(followed_id: user_id)
+  end
 
+  # ユーザーのフォローを外す
+  def unfollow(user_id)
+    follower.find_by(followed_id: user_id).destroy
+  end
 
-
-   #フォローしようとしている other_user が自分自身ではないかを検証しています
-    def follow(other_user)
-      unless self == other_user
-        self.follows.find_or_create_by(follow_id: other_user.id)
-      end
-    end
-
-    #フォローがあればアンフォロー
-    def unfollow(other_user)
-      follow = self.follows.find_by(follow_id: other_user.id)
-      follow.destroy if follow
-    end
-
-    #self.followings によりフォローしている User 達を取得し、include?(other_user) によって other_user が含まれていないかを確認
-    def following?(other_user)
-      self.followings.include?(other_user)
-    end
+  # フォローしていればtrueを返す
+  def following?(user)
+    following_user.include?(user)
+  end
 end

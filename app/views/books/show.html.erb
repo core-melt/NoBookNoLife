@@ -8,7 +8,7 @@
 					<div class="col-xs-12">
 						<h2 class="font-bold"><%= @response["items"][0]["volumeInfo"]["title"] %></h2>
 					</div>
-					<div class="col-xs-3 border-solid">
+					<div class="col-xs-3 border-inset">
 						<div class="book-sidebar">
 							<%= image_tag @response["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"] %>
 							<%= render 'books/book_status', reading: @reading, book_id: @book.id %>

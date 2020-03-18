@@ -1,6 +1,8 @@
 class ReadingBooksController < ApplicationController
   before_action :authenticate_user!
-  def index
+  def show
+    @user = User.find(params[:id])
+    @readings = @user.readings
   end
 
   def create

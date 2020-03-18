@@ -85,4 +85,5 @@ gem 'pry-byebug'
 # ネットワーク通信を取り扱う
 gem 'httpclient'
 
-
+# グラフ用
+gem 'chartkick'

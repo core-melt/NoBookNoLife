@@ -1,18 +1,42 @@
 <!-- コメントを非同期で更新 -->
 <div class="book-comments-form">
 	<%= form_with(url: books_book_comments_path, remote: true) do |f| %>
-		<div class="row border-inset">
+		<div class="row border-solid ">
 			<%= f.hidden_field :book_id, :value => book.id %>
-			<%= f.text_area :comment, class: "col-xs-12", style: "height: 100px" %>
-			<%= f.submit "送信", class: "btn btn-default pull-right" %>
+			<div class="col-xs-11">
+				<%= f.text_area :comment, class: "my-comment-area", style: "height: 100px" %>
+			</div>
+			<div class="col-xs-11">
+				<%= f.submit "送信", class: "btn btn-default pull-right" %>
+			</div>
 		</div>
 
 		<% unless comments.blank? %>
-			<% comments.each do |c| %>
-				<div class="border-inset">
-					<%= c[:comment] %>
-					<%= f.text_area :child_comment, class: "col-xs-12", style: "height: 100px" %>
-					<%= f.submit "送信", class: "btn btn-default pull-right" %>
+			<% comments.each do |cmt| %>
+				<div class="row border-solid">
+					<div class="col-xs-2">
+						<%= attachment_image_tag User.find_by(id: cmt[:user_id]), :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: '30x30' %><br/>
+						<%= link_to user_path(User.find_by(id: cmt[:user_id]).id) do %>
+							<span><%= User.find_by(id: cmt[:user_id])[:nickname] %></span>
+						<% end %>
+					</div>
+					<div class="col-xs-10">
+						<div class="row">
+							<span><%= cmt[:comment] %></span>
+						</div>
+
+						<div class="row">
+							<%= render 'book_nices/book_nice', comment: cmt %>
+						</div>
+
+						<div class="row">
+							<%= f.text_area :child_comment, class: "col-xs-12", style: "height: 50px" %>
+						</div>
+
+						<div class="row">
+							<%= f.submit "送信", class: "btn btn-default pull-right" %>
+						</div>
+					</div>
 				</div>
 			<% end %>
 		<% end %>

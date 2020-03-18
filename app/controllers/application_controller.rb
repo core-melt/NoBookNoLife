@@ -19,6 +19,8 @@ class ApplicationController < ActionController::Base
     return response
   end
 
+  # View側からでも使用できるようにする
+  helper_method :get_json_from_isbn
 
   protected
   def configure_permitted_parameters

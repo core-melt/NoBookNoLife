@@ -1,6 +1,6 @@
 <h2>ユーザー情報</h2>
 <div class="user-profile border-inset">
-	<%= user.nickname %><br/>
+	<span><%= user.nickname %></span><br/>
 	<%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %><br/>
 
 	<%= link_to 'プロフィール編集', edit_user_path, class:"btn btn-warning" %>
@@ -9,7 +9,7 @@
 	<table class="table table-striped">
 	  <tbody>
 	      <tr>
-	          <td><a href="" class="reading-books">本棚</a></td>
+	          <td><%= link_to '本棚', reading_book_path(@user.id), class:"header-menu-item"  %></td>
 	      </tr>
 	      <tr>
 	          <td><a href="" class="follows">フォロー</a></td>

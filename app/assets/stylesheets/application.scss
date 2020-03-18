@@ -51,6 +51,15 @@ input{
 	/*border-width: 1px;*/
 }
 
+
+/* 枠線設定 */
+.border-solid{
+	border-color: #d3d3d3;
+	border-style: solid;
+	border-width: 1px;
+}
+
+
 /* 文字の太さを設定 */
 .font-bold{
 	font-weight: bold;
@@ -171,6 +180,17 @@ input{
 
 
 
+
+/*
+ *
+ * _userinfo
+ *
+ */
+.user-profile{
+	background-color: #fff;
+}
+
+
 /*
  *
  * Book#show
@@ -204,4 +224,43 @@ input{
 		width: 100%;
 		text-align: left;
 	}
+}
+
+
+/*
+ *
+ * reading_books#index
+ *
+ */
+.book-shelf{
+  margin-top: 30px;
+  background-image: image-url('back_ground_wood.jpg');
+  height: 700px;
+  background-size:cover;
+
+  .book-shelf-item-image{
+  	margin-top: 10px;
+  }
+}
+
+
+/*
+ *
+ * _book_comment
+ *
+ */
+.book-comments-form{
+	.my-comment-area{
+		height: 100px;
+		width: 90%;
+	}
+}
+
+/*
+ *
+ * User#show
+ *
+ */
+.chartjs-render-monitor{
+	margin: 30px 0;
 }
