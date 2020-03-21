@@ -12,5 +12,4 @@ class BookNicesController < ApplicationController
   	nice = current_user.nices.find_by(comment_id: @cmt.id)
   	nice.destroy
   end
-
 end

@@ -3,7 +3,18 @@
 	<span><%= user.nickname %></span><br/>
 	<%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %><br/>
 
-	<%= link_to 'プロフィール編集', edit_user_path, class:"btn btn-warning" %>
+
+	<% if current_user != user %>
+	  <% if current_user.following?(user) %>
+	    <%= link_to 'フォロー外す', user_relationship_path(user.id), method: :delete, class: "btn btn-primary" %>
+	  <% else %>
+	    <%= link_to 'フォローする', user_relationship_path(user.id), method: :POST, class: "btn btn-success" %>
+	  <% end %>
+    <% else %>
+		<%= link_to 'プロフィール編集', edit_user_path, class:"btn btn-warning" %>
+	<% end %>
+
+
 
 	<h4>リンク</h4>
 	<table class="table table-striped">
@@ -12,10 +23,10 @@
 	          <td><%= link_to '本棚', reading_book_path(@user.id), class:"header-menu-item"  %></td>
 	      </tr>
 	      <tr>
-	          <td><a href="" class="follows">フォロー</a></td>
+	          <td><%= link_to 'フォロー数：' + user.followings.count.to_s, user_relationship_path(user.id) %></td>
 		  </tr>
 	      <tr>
-	          <td><a href="" class="followers">フォロワー</a></td>
+	          <td><%= link_to 'フォロワー数：' + user.followers.count.to_s, user_relationship_path(user.id) %></td>
 		  </tr>
 	      <tr>
 	          <td><a href="" class="comment">コメント</a></td>

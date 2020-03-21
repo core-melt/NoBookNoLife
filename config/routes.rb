@@ -8,7 +8,11 @@ Rails.application.routes.draw do
       resource :book_comments, only: [:create]
   end
   #post 'search' => 'books#search', as: 'search'
-  resources 'users', only: [:show, :destroy, :edit, :update]
+  resources 'users', only: [:show, :destroy, :edit, :update] do
+    resource :relationship, only: [:create, :destroy]
+    get 'relationships/follower' => 'relationships#follower', as: 'follower'
+    get 'relationships/follow' => 'relationships#follow', as: 'follow'
+  end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

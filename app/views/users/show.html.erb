@@ -7,7 +7,7 @@
 		<div class="col-xs-9">
 			<h2>読書グラフ</h2>
 			<div class="border-solid">
-				<%= line_chart @user.readings.select(:created_at).count, width: "800px", height: "400px", class: "reading_chart" %>
+				<%= line_chart @chart, width: "800px", height: "400px", class: "reading_chart" %>
 			</div>
 		</div>
 

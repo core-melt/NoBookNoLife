@@ -18,5 +18,6 @@ module NoBookNoLife
 
     # create_atとupdate_atを日本時間(JST)に変更
     config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
   end
 end
