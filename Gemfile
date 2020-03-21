@@ -87,3 +87,10 @@ gem 'httpclient'
 
 # グラフ用
 gem 'chartkick'
+
+
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
