@@ -29,6 +29,10 @@ h2{
 	font-size: 22px;
 }
 
+h3{
+	font-size: 20px;
+}
+
 span{
 	font-size: 16px;
 }
@@ -188,6 +192,15 @@ input{
  */
 .user-profile{
 	background-color: #fff;
+
+	.user-nickname{
+		height: 100px;
+	}
+
+	h3{
+		margin-top: 30px;
+		word-break: break-all;	/* 文字列自動折り返し */
+	}
 }
 
 
@@ -197,7 +210,7 @@ input{
  *
  */
 .book-show-form{
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 
 	.book-sidebar{
 		margin: 10px 0;
@@ -250,11 +263,67 @@ input{
  *
  */
 .book-comments-form{
+	width: 90%;
+	margin-left: 30px;
+
 	.my-comment-area{
 		height: 100px;
-		width: 90%;
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	.user-nickname{
+		word-break: break-all;	/* 文字列自動折り返し */
+	}
+
+	.commented-form{
+		margin: 10px 0;
+
+		.comment-field{
+			margin: 10px 0 0 10px;
+		}
+
+		.book-comment-info{
+			margin: 10px 0;
+		}
+
+		.child-comment-info{
+			width: 70%;
+			margin: 10px 10px 0 auto;
+
+			.child-comment-field{
+				margin: 10px 0 10px 10px;
+
+				.child-user-image{
+					padding: 0;
+				}
+			}
+		}
+
+		.book-child-comment-info{
+			width: 70%;
+			margin: 10px 10px 10px auto;
+
+			.input-child-book{
+				height: 50px;
+				width: 100%;
+			}
+		}
 	}
 }
+
+/*
+ *
+ * _book_nice
+ *
+ */
+.comment_nice_form{
+	p{
+		margin: 0;
+	}
+}
+
+
 
 /*
  *
@@ -264,3 +333,25 @@ input{
 .chartjs-render-monitor{
 	margin: 30px 0;
 }
+
+/*
+ *
+ * relationships#follow
+ *
+ */
+ .user-follow-form{
+ 	.follow-list{
+ 		margin-top: 30px;
+ 	}
+ }
+
+/*
+ *
+ * relationships#follower
+ *
+ */
+ .user-follower-form{
+ 	.follower-list{
+ 		margin-top: 30px;
+ 	}
+ }

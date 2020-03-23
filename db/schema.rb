@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_113403) do
 
   create_table "child_comments", force: :cascade do |t|
     t.integer "comment_id"
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

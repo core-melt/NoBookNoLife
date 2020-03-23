@@ -19,6 +19,12 @@ class UsersController < ApplicationController
 
   def update
   	@user = User.find(current_user.id)
+
+    # パスワードが空ならパスワードは更新しない
+    if params[:user][:password].blank?
+      params[:user].delete("password")
+    end
+
   	if @user.update(user_permitted_parameters)
   		redirect_to user_path(current_user.id)
   	else

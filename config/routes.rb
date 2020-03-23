@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   end
   #post 'search' => 'books#search', as: 'search'
   resources 'users', only: [:show, :destroy, :edit, :update] do
-    resource :relationship, only: [:create, :destroy]
-    get 'relationships/follower' => 'relationships#follower', as: 'follower'
-    get 'relationships/follow' => 'relationships#follow', as: 'follow'
+    resource :relationships, only: [:create, :destroy]
   end
+
+  get 'relationships/follower' => 'relationships#follower', as: 'follower'
+  get 'relationships/follow' => 'relationships#follow', as: 'follow'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

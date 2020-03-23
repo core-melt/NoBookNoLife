@@ -1,11 +1,13 @@
-<div class="comment_nice_<%= comment.id %>">
-	<% if comment.niced_by?(current_user) %>
-		<%= link_to books_book_nices_path(comment_id: comment.id), method: :delete, remote: true, class: "btn btn-default" do %>
-			<p class="glyphicon glyphicon-star"><%= comment.nices.count %>いいね</p>
+<div class="comment_nice_form">
+	<div class="comment_nice_<%= comment.id %>">
+		<% if comment.niced_by?(current_user) %>
+			<%= link_to books_book_nices_path(comment_id: comment.id), method: :delete, remote: true, class: "btn btn-default" do %>
+				<p class="glyphicon glyphicon-star"><%= comment.nices.count %>いいね</p>
+			<% end %>
+		<% else %>
+			<%= link_to books_book_nices_path(comment_id: comment.id), method: :post, remote: true, class: "btn btn-default" do %>
+				<p class="glyphicon glyphicon-star-empty"><%= comment.nices.count %>いいね</p>
+			<% end %>
 		<% end %>
-	<% else %>
-		<%= link_to books_book_nices_path(comment_id: comment.id), method: :post, remote: true, class: "btn btn-default" do %>
-			<p class="glyphicon glyphicon-star-empty"><%= comment.nices.count %>いいね</p>
-		<% end %>
-	<% end %>
+	</div>
 </div>

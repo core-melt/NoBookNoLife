@@ -1,43 +1,93 @@
 <!-- コメントを非同期で更新 -->
 <div class="book-comments-form">
 	<%= form_with(url: books_book_comments_path, remote: true) do |f| %>
-		<div class="row border-solid ">
-			<%= f.hidden_field :book_id, :value => book.id %>
-			<div class="col-xs-11">
-				<%= f.text_area :comment, class: "my-comment-area", style: "height: 100px" %>
-			</div>
-			<div class="col-xs-11">
-				<%= f.submit "送信", class: "btn btn-default pull-right" %>
+		<div class="book-comment-info">
+			<div class="row border-solid">
+				<%= f.hidden_field :book_id, :value => book.id %>
+				<div class="col-xs-12">
+					<%= f.text_area :comment, class: "my-comment-area", style: "height: 100px" %>
+				</div>
+
+				<div class="col-xs-1">
+					<%= f.check_box :spoiler, class:"check-spoiler pull-right" %>
+				</div>
+				<div class="col-xs-2">
+					<span>ネタばれ</span>
+				</div>
+
+				<div class="col-xs-9">
+					<%= f.submit "送信", class: "btn btn-default pull-right" %>
+				</div>
 			</div>
 		</div>
+	<% end %>
 
-		<% unless comments.blank? %>
-			<% comments.each do |cmt| %>
-				<div class="row border-solid">
-					<div class="col-xs-2">
-						<%= attachment_image_tag User.find_by(id: cmt[:user_id]), :profile_image, :fill, 30, 30, fallback: "no_image.jpg", size: '30x30' %><br/>
-						<%= link_to user_path(User.find_by(id: cmt[:user_id]).id) do %>
-							<span><%= User.find_by(id: cmt[:user_id])[:nickname] %></span>
+	<% unless comments.blank? %>
+		<% comments.each do |cmt| %>
+			<% unless current_user.spoiler_prevention == true && cmt.spoiler == true %>
+				<%= form_with(url: books_book_comments_path, remote: true) do |f| %>
+					<div class="commented-form">
+						<% if ChildComment.find_by(comment_id: cmt.id).blank? %>
+							<div class="row border-solid">
+								<div class="row">
+									<div class="comment-field">
+										<div class="col-xs-1">
+											<%= attachment_image_tag User.find_by(id: cmt.user_id), :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50' %>
+										</div>
+										<div class="col-xs-11">
+											<%= link_to user_path(User.find_by(id: cmt.user_id).id) do %>
+												<div class="user-nickname">
+													<span><%= User.find_by(id: cmt.user_id).nickname %></span>
+												</div>
+											<% end %>
+											<div class="book-comment">
+												<span><%= cmt.comment %></span>
+											</div>
+											<%= render 'book_nices/book_nice', comment: cmt %>
+										</div>
+									</div>
+								</div>
+
+								<% unless ChildComment.find_by(parent_id: cmt.id).blank? %>
+									<% ChildComment.where(parent_id: cmt.id).each do |child| %>
+										<div class="child-comment-info border-solid">
+											<div class="child-comment-field row">
+												<div class="col-xs-1 child-user-image">
+													<%= attachment_image_tag User.find_by(id: Comment.find_by(id: child.comment_id).user_id), :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: '50x50' %>
+												</div>
+												<div class="col-xs-11">
+													<%= link_to user_path(Comment.find_by(id: child.comment_id).user_id) do %>
+														<div class="user-nickname">
+															<span><%= User.find_by(id: Comment.find_by(id: child.comment_id).user_id).nickname %></span>
+														</div>
+													<% end %>
+													<div class="book-comment">
+														<span><%= Comment.find_by(id: child.comment_id).comment %></span>
+													</div>
+													<%= render 'book_nices/book_nice', comment: Comment.find_by(id: child.comment_id) %>
+												</div>
+											</div>
+										</div>
+									<% end %>
+								<% end %>
+
+								<div class="book-child-comment-info">
+									<div class="row">
+										<div class="col-xs-12">
+											<%= f.text_area :child_comment, class: "input-child-book  pull-right" %>
+										</div>
+
+										<div class="col-xs-12">
+											<%= f.hidden_field :book_id, :value => book.id %>
+											<%= f.hidden_field :parent_id, :value => cmt.id %>
+											<%= f.submit "送信", class: "btn btn-default pull-right" %>
+										</div>
+									</div>
+								</div>
+							</div>
 						<% end %>
 					</div>
-					<div class="col-xs-10">
-						<div class="row">
-							<span><%= cmt[:comment] %></span>
-						</div>
-
-						<div class="row">
-							<%= render 'book_nices/book_nice', comment: cmt %>
-						</div>
-
-						<div class="row">
-							<%= f.text_area :child_comment, class: "col-xs-12", style: "height: 50px" %>
-						</div>
-
-						<div class="row">
-							<%= f.submit "送信", class: "btn btn-default pull-right" %>
-						</div>
-					</div>
-				</div>
+				<% end %>
 			<% end %>
 		<% end %>
 	<% end %>
