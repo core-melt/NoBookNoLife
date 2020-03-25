@@ -10,8 +10,16 @@
 					</div>
 					<div class="col-xs-3 border-inset">
 						<div class="book-sidebar">
-							<%= image_tag @response["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"] %>
-							<%= render 'books/book_status', reading: @reading, book_id: @book.id %>
+							<%= image_tag @response["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"] %><br/>
+
+							<h4 class="font-bold">作者</h4>
+							<% @response["items"][0]["volumeInfo"]["authors"].each do |author| %>
+									<%= author %><br/>
+							<% end %>
+
+							<% if user_signed_in? %>
+								<%= render 'books/book_status', reading: @reading, book_id: @book.id %>
+							<% end %>
 
 							<h4 class="font-bold">概要</h4>
 							<%= @response["items"][0]["volumeInfo"]["description"] %>
@@ -19,7 +27,9 @@
 					</div>
 
 					<div class="col-xs-9">
-						<%= render 'book_comments/book_comment', book: @book, comments: @comments %>
+						<% if user_signed_in? %>
+							<%= render 'book_comments/book_comment', book: @book, comments: @comments %>
+						<% end %>
 					</div>
 				</div>
 			<% end %>

@@ -1,4 +1,4 @@
-<div class="regstarations-new-form">
+<div class="user-edit-form">
   <div class="input-user-info">
     <div class="container">
       <div class="input-user-info-title">
@@ -63,10 +63,8 @@
             </div>
           </div>
 
-          <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> 文字以上入力してください)</em>
-          <% end %>
-
+          <em>(6文字以上入力してください)</em>
+          <p>※パスワードを変更した場合、トップ画面へ戻ります。</p>
 
           <div class="row">
             <div class="field">
@@ -96,21 +94,30 @@
             <em>(<%= @minimum_password_length %> 文字以上入力してください)</em>
           <% end %>
  -->
-          <div class="row">
-            <div class="field">
-              <div class="col-xs-6">
-                <%= f.submit "更新", class:"btn btn-warning btn-lg" %>
-              </div>
-              <div class="col-xs-6">
-                <%= link_to "戻る", :back, class:"btn btn-info btn-lg"  %>
+          <div class="button-field">
+            <div class="row">
+              <div class="field">
+                <div class="col-xs-6">
+                  <div class="button-update">
+                    <%= f.submit "更新", class:"btn btn-warning btn-lg" %>
+                  </div>
+                </div>
+                <div class="col-xs-6">
+                  <div class="button-back">
+                    <%= link_to "戻る", :back, class:"btn btn-info btn-lg"  %>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="field">
-              <div class="col-xs-6">
-                <%= link_to '退会する', user_path(@user), method: :delete, data: { confirm: '退会しますか？' }, class:"btn btn-info btn-lg" %>
+            <div class="row">
+              <div class="field">
+                <div class="col-xs-12">
+                  <br/>
+                  <div class="button-delete">
+                    <%= link_to '退会する', user_path(@user), method: :delete, data: { confirm: '退会しますか？' }, class:"btn btn-danger btn-lg" %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

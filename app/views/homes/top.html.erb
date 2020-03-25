@@ -1,2 +1,13 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+	<div class="row">
+		<h2>ランキング(コメント数)</h2>
+		<% cnt = 1 %>
+		<% @ranking.each do |rank| %>
+			<div class="col-xs-3">
+				<span><%= '第' + cnt.to_s + '位' %></span><br/>
+				<%= image_tag rank["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"] %>
+				<% cnt += 1 %>
+			</div>
+		<% end %>
+	</div>
+</div>

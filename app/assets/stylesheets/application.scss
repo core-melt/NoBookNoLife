@@ -116,7 +116,7 @@ input{
  * 新規登録、ログイン共通
  *
  */
-.regstarations-new-form, .sessions-new-form{
+.regstarations-new-form, .sessions-new-form, .user-edit-form{
 	width: 100%;
 	margin-top: 30px;
 
@@ -174,7 +174,25 @@ input{
 	}
 }
 
+.user-edit-form{
+	.button-field{
+		margin: 30px 0;
+	}
 
+	.button-update, .button-back{
+		width: 100%;
+		margin: 0 auto;
+
+		.btn{
+			margin: 0 50px;
+		}
+	}
+
+	.button-delete{
+		width: 100%;
+		margin: 0 100px;
+	}
+}
 
 /*
  *

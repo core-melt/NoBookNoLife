@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
   def current_user?
     if current_user != User.find(params[:id])
-      redirect_back(fallback_location: root_path)
+      redirect_to user_path(current_user.id)
     end
   end
 end

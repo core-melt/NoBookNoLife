@@ -24,7 +24,7 @@
 
 	<% unless comments.blank? %>
 		<% comments.each do |cmt| %>
-			<% unless current_user.spoiler_prevention == true && cmt.spoiler == true %>
+			<% unless current_user.spoiler_prevention == true && cmt.spoiler == true && current_user != User.find_by(id: cmt.user_id) %>
 				<%= form_with(url: books_book_comments_path, remote: true) do |f| %>
 					<div class="commented-form">
 						<% if ChildComment.find_by(comment_id: cmt.id).blank? %>

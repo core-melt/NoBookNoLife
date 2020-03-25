@@ -15,12 +15,14 @@ class BooksController < ApplicationController
 				# まだ登録されていないisbnなら登録
 				@book = create	# createを実施
 
-				# 読書履歴情報取得
-				# ユーザーの読書履歴にあるか確認
-				if Reading.find_by(user_id: current_user.id, book_id: @book.id).nil?
-					@reading = Reading.new
-				else
-					@reading = Reading.find_by(user_id: current_user.id, book_id: @book.id)
+				if user_signed_in?
+					# 読書履歴情報取得
+					# ユーザーの読書履歴にあるか確認
+					if Reading.find_by(user_id: current_user.id, book_id: @book.id).nil?
+						@reading = Reading.new
+					else
+						@reading = Reading.find_by(user_id: current_user.id, book_id: @book.id)
+					end
 				end
 
 				# コメント情報取得
