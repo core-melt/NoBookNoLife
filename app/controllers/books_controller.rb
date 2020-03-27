@@ -26,7 +26,8 @@ class BooksController < ApplicationController
 				end
 
 				# コメント情報取得
-				@comments = @book.comments
+				comments = @book.comments
+				@comments = comments.page(params[:page])
 			end
 		end
 	end

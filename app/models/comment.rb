@@ -8,6 +8,7 @@ class Comment < ApplicationRecord
 	validates :book_id, presence: true
 	validates :comment, presence: true
 
+	paginates_per 5
 
 	def niced_by?(user)
     	self.nices.where(user_id: user.id).exists?

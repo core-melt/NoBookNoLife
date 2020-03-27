@@ -12,13 +12,20 @@
 							<div class="col-xs-2">
 								<div class="book-shelf-item-image">
 									<%= link_to books_path(search: Book.find_by(id: reading[:book_id])[:isbn]) do %>
-										<%= image_tag get_json_from_isbn(Book.find_by(id: reading[:book_id])[:isbn])["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"], :size =>'128x182' %>
+										<% book_image = get_json_from_isbn(Book.find_by(id: reading[:book_id])[:isbn]) %>
+
+										<% unless book_image["items"][0]["volumeInfo"]["imageLinks"].blank? %>
+											<%= image_tag book_image["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"], :size =>'128x182' %><br/>
+										<% else %>
+											<img src="assets/no_book_image.jpg" width="60" height="60" title="no_image">
+										<% end %>
 									<% end %>
 								</div>
 							</div>
 						<% end %>
 					</div>
 				</div>
+				<%= paginate @readings, class: "paginate" %>
 			</div>
 		</div>
 	</div>
