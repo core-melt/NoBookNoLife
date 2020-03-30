@@ -5,7 +5,15 @@
 		<% @ranking.each do |rank| %>
 			<div class="col-xs-3">
 				<span><%= '第' + cnt.to_s + '位' %></span><br/>
-				<%= image_tag rank["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"] %>
+
+				<%= link_to books_path(search: rank["items"][0]["volumeInfo"]["industryIdentifiers"][1]["identifier"]) do %>
+					<% unless rank["items"][0]["volumeInfo"]["imageLinks"].blank? %>
+						<%= image_tag rank["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"] %>
+					<% else %>
+						<img src="assets/no_book_image.jpg" width="60" height="60" title="no_image">
+					<% end %>
+				<% end %>
+
 				<% cnt += 1 %>
 			</div>
 		<% end %>
