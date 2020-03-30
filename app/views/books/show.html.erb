@@ -37,7 +37,6 @@
 					<div class="col-xs-9">
 						<% if user_signed_in? %>
 							<%= render 'book_comments/book_comment', book: @book, comments: @comments %>
-							<%= paginate @comments, class: "paginate" %>
 						<% end %>
 					</div>
 				</div>
