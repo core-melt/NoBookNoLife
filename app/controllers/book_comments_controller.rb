@@ -6,6 +6,7 @@ class BookCommentsController < ApplicationController
 	  	comment = @book.comments.new(user_id: current_user.id)
 	  	comment[:comment] = params[:comment].blank? ? params[:child_comment] : params[:comment]
 	  	comment[:spoiler] = params[:spoiler]
+	  	comment.score = Language.get_data(comment[:comment])
 	  	comment.save
 
 	  	# 子コメントの場合の処理

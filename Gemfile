@@ -94,3 +94,6 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# 環境変数用
+gem 'dotenv-rails'

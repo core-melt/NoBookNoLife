@@ -5,6 +5,7 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.integer :book_id
       t.boolean :spoiler
       t.text    :comment
+      t.decimal "score", precision: 5, scale: 3
       t.timestamps
     end
   end

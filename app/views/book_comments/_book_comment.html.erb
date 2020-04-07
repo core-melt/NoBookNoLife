@@ -43,6 +43,10 @@
 											<div class="book-comment">
 												<span><%= cmt.comment %></span>
 											</div>
+		                      				<div class="book-comment-score">
+		                        				<span class="comment-score"><%= cmt&.score %></span>
+		                      				</div>
+
 											<%= render 'book_nices/book_nice', comment: cmt %>
 										</div>
 									</div>
@@ -63,6 +67,9 @@
 													<% end %>
 													<div class="book-comment">
 														<span><%= Comment.find_by(id: child.comment_id).comment %></span>
+				                      				<div class="book-comment-score">
+				                        				<span class="comment-score"><%= Comment.find_by(id: child.comment_id)&.score %></span>
+				                      				</div>
 													</div>
 													<%= render 'book_nices/book_nice', comment: Comment.find_by(id: child.comment_id) %>
 												</div>
