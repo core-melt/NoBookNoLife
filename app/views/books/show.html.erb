@@ -1,46 +1,42 @@
 <div class="book-show-form">
 	<div class="container">
 		<div class="row">
-			<% if @response["totalItems"] == 0 %>
-				<h2 class="font-bold">検索条件「ISBN:<%= @search %>」と一致する書籍はありませんでした</h2>
-			<% else %>
-				<div class="book-sidebar">
-					<div class="col-xs-12">
-						<h2 class="font-bold"><%= @response["items"][0]["volumeInfo"]["title"] %></h2>
-					</div>
-					<div class="col-xs-3 border-inset">
-						<div class="book-sidebar">
-							<% unless @response["items"][0]["volumeInfo"]["imageLinks"].blank? %>
-								<%= image_tag @response["items"][0]["volumeInfo"]["imageLinks"]["smallThumbnail"] %><br/>
-							<% else %>
-								<img src="assets/no_book_image.jpg" width="60" height="60" title="no_image">
-							<% end %>
-
-							<h4 class="font-bold">作者</h4>
-							<% unless @response["items"][0]["volumeInfo"]["authors"].blank? %>
-								<% @response["items"][0]["volumeInfo"]["authors"].each do |author| %>
-										<%= author %><br/>
-								<% end %>
-							<% else %>
-								<p>不明</p>
-							<% end %>
-
-							<% if user_signed_in? %>
-								<%= render 'books/book_status', reading: @reading, book_id: @book.id %>
-							<% end %>
-
-							<h4 class="font-bold">概要</h4>
-							<%= @response["items"][0]["volumeInfo"]["description"] %>
-						</div>
-					</div>
-
-					<div class="col-xs-9">
-						<% if user_signed_in? %>
-							<%= render 'book_comments/book_comment', book: @book, comments: @comments %>
+			<div class="book-sidebar">
+				<div class="col-xs-12">
+					<h2 class="font-bold"><%= @response["volumeInfo"]["title"] %></h2>
+				</div>
+				<div class="col-xs-3 border-inset">
+					<div class="book-sidebar">
+						<% unless @response["volumeInfo"]["imageLinks"].blank? %>
+							<%= image_tag @response["volumeInfo"]["imageLinks"]["smallThumbnail"] %><br/>
+						<% else %>
+							<img src="assets/no_book_image.jpg" width="60" height="60" title="no_image">
 						<% end %>
+
+						<h4 class="font-bold">作者</h4>
+						<% unless @response["volumeInfo"]["authors"].blank? %>
+							<% @response["volumeInfo"]["authors"].each do |author| %>
+									<%= author %><br/>
+							<% end %>
+						<% else %>
+							<p>不明</p>
+						<% end %>
+
+						<% if user_signed_in? %>
+							<%= render 'books/book_status', reading: @reading, book_id: @book.id %>
+						<% end %>
+
+						<h4 class="font-bold">概要</h4>
+						<%= @response["volumeInfo"]["description"] %>
 					</div>
 				</div>
-			<% end %>
+
+				<div class="col-xs-9">
+					<% if user_signed_in? %>
+						<%= render 'book_comments/book_comment', book: @book, comments: @comments %>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

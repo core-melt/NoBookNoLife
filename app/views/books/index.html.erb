@@ -1,0 +1,33 @@
+<div class="book-index-form">
+	<div class="container">
+		<% if @response["totalItems"] == 0 %>
+			<h2 class="font-bold">検索条件「<%= @search %>」に関連する書籍はありませんでした</h2>
+		<% else %>
+			<div>
+				<h2 class="font-bold">検索条件「<%= @search %>」に関連する書籍を最大40件表示します</h2>
+			</div>
+
+			<div class="row">
+				<div class="book-index">
+					<% @response["items"].each do |response| %>
+
+						<div class="col-xs-2">
+							<div class="book-index-item-image">
+								<%#= link_to books_path(search: response["volumeInfo"]["industryIdentifiers"][1]["identifier"]) do %>
+								<%= link_to books_path(search: response["selfLink"]) do %>
+									<% unless response["volumeInfo"]["imageLinks"].blank? %>
+										<%= image_tag response["volumeInfo"]["imageLinks"]["smallThumbnail"], :size =>'128x182' %>
+									<% else %>
+										<%= image_tag 'no_book_image.jpg', :size => '128x128' %>
+									<% end %>
+								<% end %>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<footer></footer>

@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_03_20_113403) do
 
   create_table "books", force: :cascade do |t|
-    t.string "isbn"
+    t.text "selflink"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_113403) do
     t.integer "book_id"
     t.boolean "spoiler"
     t.text "comment"
+    t.decimal "score", precision: 5, scale: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

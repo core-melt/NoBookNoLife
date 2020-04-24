@@ -16,7 +16,7 @@ class BookCommentsController < ApplicationController
 		end
 
 		#非同期用
-		comments = @book.comments
+		comments = @book.comments.order(created_at: "DESC")
 		@comments = comments.page(params[:page])
 	else
 		redirect_back(fallback_location: root_path)

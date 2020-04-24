@@ -28,7 +28,7 @@ class ReadingBooksController < ApplicationController
 
     # 元々読了ならば未読に戻さない
     readed = false
-  	if params[:reading_status] == "4" || @reading[:readed_status]
+  	if params[:reading_status] == "4" || params[:readed_status]
   		# 読了の場合
   		readed = true
   	end
@@ -39,7 +39,7 @@ class ReadingBooksController < ApplicationController
   end
 
   def destroy
-  	if @reading[:readed_status]
+  	if params[:readed_status]
   		# 読了の場合は削除しない
   		# 元の画面のまま
 

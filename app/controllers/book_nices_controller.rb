@@ -3,12 +3,14 @@ class BookNicesController < ApplicationController
   before_action :authenticate_user!
   def create
   	@cmt = Comment.find_by(id: params[:comment_id])
+    @book = Book.find_by(id: @cmt.book_id)
   	nice = current_user.nices.new(comment_id: @cmt.id)
   	nice.save
   end
 
   def destroy
   	@cmt = Comment.find_by(id: params[:comment_id])
+    @book = Book.find_by(id: @cmt.book_id)
   	nice = current_user.nices.find_by(comment_id: @cmt.id)
   	nice.destroy
   end

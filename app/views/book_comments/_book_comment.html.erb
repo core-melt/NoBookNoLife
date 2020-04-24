@@ -1,6 +1,6 @@
 <!-- コメントを非同期で更新 -->
 <div class="book-comments-form">
-	<%= form_with(url: books_book_comments_path, remote: true) do |f| %>
+	<%= form_with(url: books_book_comments_path(book_id: book.id), remote: true) do |f| %>
 		<div class="book-comment-info">
 			<div class="row border-solid">
 				<%= f.hidden_field :book_id, :value => book.id %>
@@ -25,7 +25,7 @@
 	<% unless comments.blank? %>
 		<% comments.each do |cmt| %>
 			<% unless current_user.spoiler_prevention == true && cmt.spoiler == true && current_user != User.find_by(id: cmt.user_id) %>
-				<%= form_with(url: books_book_comments_path, remote: true) do |f| %>
+				<%= form_with(url: books_book_comments_path(book_id: book.id), remote: true) do |f| %>
 					<div class="commented-form">
 						<% if ChildComment.find_by(comment_id: cmt.id).blank? %>
 							<div class="row border-solid">
@@ -47,7 +47,7 @@
 		                        				<span class="comment-score"><%= cmt&.score %></span>
 		                      				</div>
 
-											<%= render 'book_nices/book_nice', comment: cmt %>
+											<%= render 'book_nices/book_nice', book: book, comment: cmt %>
 										</div>
 									</div>
 								</div>
@@ -71,7 +71,7 @@
 				                        				<span class="comment-score"><%= Comment.find_by(id: child.comment_id)&.score %></span>
 				                      				</div>
 													</div>
-													<%= render 'book_nices/book_nice', comment: Comment.find_by(id: child.comment_id) %>
+													<%= render 'book_nices/book_nice', book: book, comment: Comment.find_by(id: child.comment_id) %>
 												</div>
 											</div>
 										</div>

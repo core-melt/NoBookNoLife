@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-	validates :isbn, presence: true
+	validates :selflink, presence: true
 
 	has_many :readings, dependent: :destroy
 	has_many :comments, dependent: :destroy

@@ -69,6 +69,13 @@ input{
 	font-weight: bold;
 }
 
+/* フッター */
+footer{
+	width: 100%;
+	height: 100px;
+	background-color: #82FF96;
+}
+
 
 /*
  *
@@ -226,6 +233,20 @@ input{
 	h3{
 		margin-top: 30px;
 		word-break: break-all;	/* 文字列自動折り返し */
+	}
+}
+
+
+/*
+ *
+ * Book#index
+ *
+ */
+.book-index-form{
+	margin: 40px 0;
+
+	.book-index-item-image{
+		margin-top: 10px;
 	}
 }
 
