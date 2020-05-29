@@ -88,7 +88,7 @@ gem 'httpclient'
 # グラフ用
 gem 'chartkick'
 
-gem 'kaminari','~> 1.1.1'
+gem 'kaminari','~> 1.2.1'
 
 gem 'dotenv-rails'
 group :production do
