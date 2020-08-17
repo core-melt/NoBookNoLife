@@ -76,6 +76,21 @@ footer{
 	background-color: #82FF96;
 }
 
+/*
+ *
+ * レスポンシブ対応設定
+ *
+ */
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+	.header{
+		width:100%;
+	}
+}
+
+
+
+
 
 /*
  *
