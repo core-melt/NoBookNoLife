@@ -78,29 +78,18 @@ footer{
 
 /*
  *
- * レスポンシブ対応設定
- *
- */
-/* スマートフォンサイズ（425px）以下の際に適用される設定 */
-@media screen and (max-width:425px) {
-	.header{
-		width:100%;
-	}
-}
-
-
-
-
-
-/*
- *
  * ヘッダ設定
  *
  */
 /* ヘッダーのリンク部設定 */
 .header{
+	h1{	margin: 20px 0 0 0; }
+	ul{	margin: 0; }
+	.search-bar{ margin: 0 0 10px 0; }
+
 	.header-menu-logo, .header-menu-item{
 		color: #ffffff;
+
 		/* !importantで最優先化 */
 		text-decoration: none !important;
 
@@ -118,13 +107,15 @@ footer{
 
 	/* ヘッダーのリンク部位置調整 */
 	.header-menu{
-		padding: 15px;
+		padding-bottom: 10px;
 		width: 35%;
 	}
 
 	.header-menu-logo{
 		vertical-align: top;
 	}
+
+	.search_text{ width: 250px; }
 
 	/* Bootstrap navbarで自動で50px取得しているので修正 */
 	.navbar{
@@ -420,3 +411,65 @@ footer{
  		margin-top: 30px;
  	}
  }
+
+
+
+/*
+ *
+ * レスポンシブ対応設定
+ *
+ */
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+	.header{
+		width:100%;
+	}
+}
+
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+	h1{
+		font-size: 16px;
+	}
+
+	h2{
+		font-size: 14px;
+	}
+
+	h3{
+		font-size: 12px;
+	}
+
+	span{
+		font-size: 10px;
+	}
+
+	p{
+		font-size: 8px;
+	}
+
+	.header{
+		width:100%;
+
+		.nav{
+			width:100%;
+		}
+
+		.search_text{
+			width: 200px;
+			height: 20px;
+			font-size: 8px;
+		}
+		.search_button{
+			width: 20x;
+			height: 20px;
+			font-size: 10px;
+		}
+	}
+}
+
+
+
+
+
+
