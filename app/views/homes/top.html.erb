@@ -1,20 +1,22 @@
-<div class="container">
-	<div class="row">
-		<h2>ランキング(コメント数)</h2>
-		<% cnt = 1 %>
-		<% @ranking.each do |rank| %>
-			<div class="col-xs-3">
-				<span><%= '第' + cnt.to_s + '位' %></span><br/>
-				<%= link_to books_path(search: rank["selfLink"]) do %>
-					<% unless rank["volumeInfo"]["imageLinks"].blank? %>
-						<%= image_tag rank["volumeInfo"]["imageLinks"]["smallThumbnail"] %>
-					<% else %>
-						<img src="assets/no_book_image.jpg" width="60" height="60" title="no_image">
+<div class="top-form">
+	<div class="container">
+		<div class="row">
+			<h2>ランキング(コメント数)</h2>
+			<% cnt = 1 %>
+			<% @ranking.each do |rank| %>
+				<div class="col-xs-3">
+					<span><%= '第' + cnt.to_s + '位' %></span><br/>
+					<%= link_to books_path(search: rank["selfLink"]) do %>
+						<% unless rank["volumeInfo"]["imageLinks"].blank? %>
+							<%= image_tag rank["volumeInfo"]["imageLinks"]["smallThumbnail"], class: "book_image" %>
+						<% else %>
+							<img src="assets/no_book_image.jpg" width="60" height="60" title="no_image">
+						<% end %>
 					<% end %>
-				<% end %>
 
-				<% cnt += 1 %>
-			</div>
-		<% end %>
+					<% cnt += 1 %>
+				</div>
+			<% end %>
+		</div>
 	</div>
 </div>
