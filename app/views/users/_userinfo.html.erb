@@ -1,13 +1,13 @@
 <h2>ユーザー情報</h2>
 <div class="user-profile border-inset">
-		<div class="row">
-			<div class="col-xs-6">
-				<%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
-			</div>
-			<div class="col-xs-6 user-nickname">
-				<h3><%= user.nickname %></h3>
-			</div>
+	<div class="row">
+		<div class="col-xs-6">
+			<%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100', class: "profile_image" %>
 		</div>
+		<div class="col-xs-6 user-nickname">
+			<h3><%= user.nickname %></h3>
+		</div>
+	</div>
 
 
 	<% if current_user != user %>
@@ -41,7 +41,7 @@
 	</table>
 
 	<h4>自己紹介</h4>
-	<%= user.introduction %>
+	<span><%= user.introduction %></span>
 
 </div>
 
