@@ -1,13 +1,16 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-3">
-			<%= render 'users/userinfo', user: @user %>
-		</div>
+<div class="user-show-form">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3">
+				<%= render 'users/userinfo', user: @user %>
+			</div>
 
-		<div class="col-xs-9">
-			<h2>読書グラフ</h2>
-			<div class="border-solid">
-				<%= line_chart @chart, width: "800px", height: "400px", class: "reading_chart" %>
+			<div class="col-xs-9">
+				<h2>読書グラフ</h2>
+				<div class="border-solid">
+					<%#= line_chart @chart, width: "800px", height: "400px", class: "reading_chart" %>
+					<%= line_chart @chart %>
+				</div>
 			</div>
 		</div>
 	</div>
