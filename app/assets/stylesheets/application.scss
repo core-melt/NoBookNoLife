@@ -608,7 +608,15 @@ footer{
 				font-size: 8px;
 			}
 		}
+	}
 
+	.book-index-form{
+		margin: 10px 0;
+
+		.book_image, .no_book_image{
+			width: 42px;
+			height: 62px;
+		}
 	}
 
 }

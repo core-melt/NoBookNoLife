@@ -16,9 +16,9 @@
 								<%#= link_to books_path(search: response["volumeInfo"]["industryIdentifiers"][1]["identifier"]) do %>
 								<%= link_to books_path(search: response["selfLink"]) do %>
 									<% unless response["volumeInfo"]["imageLinks"].blank? %>
-										<%= image_tag response["volumeInfo"]["imageLinks"]["smallThumbnail"], :size =>'128x182' %>
+										<%= image_tag response["volumeInfo"]["imageLinks"]["smallThumbnail"], :size =>'128x182', class: "book_image" %>
 									<% else %>
-										<%= image_tag 'no_book_image.jpg', :size => '128x128' %>
+										<%= image_tag 'no_book_image.jpg', :size => '128x128', class: "no_book_image" %>
 									<% end %>
 								<% end %>
 							</div>
