@@ -532,6 +532,34 @@ footer{
 			padding: 0 5px;
 		}
 	}
+
+	.user-follow-form, .user-follower-form{
+		.table{
+			th{
+				font-size: 8px;
+			}
+
+			td{
+				padding: 1px;
+			}
+		}
+
+		p{
+			margin: 5px 0;
+		}
+
+		.profile_image {
+			width: 15px;
+			height: 15px;
+		}
+
+		.btn{
+			font-size: 8px;
+			padding: 1px;
+		}
+	}
+
+
 }
 
 
