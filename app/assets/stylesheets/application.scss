@@ -203,7 +203,7 @@ footer{
 
 	.button-delete{
 		width: 100%;
-		margin: 0 100px;
+		margin: 0 20%;
 	}
 }
 
@@ -559,6 +559,57 @@ footer{
 		}
 	}
 
+	.user-edit-form{
+		p{
+			margin: 3px 0;
+		}
+
+		.input-user-info{
+			width: 80%;
+		}
+
+		.nickname{
+			font-size: 8px;
+		}
+
+		.profile_image{
+			font-size: 8px;
+		}
+
+		.introduction{
+			font-size: 8px;
+		}
+
+		.user-email{
+			font-size: 8px;
+		}
+
+		.new-password{
+			font-size: 8px;
+		}
+
+		em{
+			font-size: 8px;
+		}
+
+		.button-field{
+			.button-update, .button-back{
+				.btn{
+					font-size: 8px;
+					margin: 0 30%;
+				}
+			}
+		}
+
+		.button-delete{
+			margin: 0 25%;
+
+			.btn{
+				font-size: 8px;
+			}
+		}
+
+	}
 
 }
 
