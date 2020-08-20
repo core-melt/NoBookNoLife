@@ -2,21 +2,25 @@
 <div class="book-comments-form">
 	<%= form_with(url: books_book_comments_path(book_id: book.id), remote: true) do |f| %>
 		<div class="book-comment-info">
-			<div class="row border-solid">
-				<%= f.hidden_field :book_id, :value => book.id %>
-				<div class="col-xs-12">
-					<%= f.text_area :comment, class: "my-comment-area", style: "height: 100px" %>
+			<div class="border-solid">
+				<div class="row">
+					<%= f.hidden_field :book_id, :value => book.id %>
+					<div class="col-xs-12">
+						<%= f.text_area :comment, class: "my-comment-area", style: "height: 100px" %>
+					</div>
 				</div>
 
-				<div class="col-xs-1">
-					<%= f.check_box :spoiler, class:"check-spoiler pull-right" %>
-				</div>
-				<div class="col-xs-2">
-					<span>ネタばれ</span>
-				</div>
+				<div class="row book_comment_btn">
+					<div class="col-xs-1 spoiler">
+						<%= f.check_box :spoiler, class:"check-spoiler pull-right" %>
+					</div>
+					<div class="col-xs-2 spoiler_comment">
+						<span>ネタばれ</span>
+					</div>
 
-				<div class="col-xs-9">
-					<%= f.submit "送信", class: "btn btn-default pull-right" %>
+					<div class="col-xs-9 comment_submit">
+						<%= f.submit "送信", class: "btn btn-default pull-right" %>
+					</div>
 				</div>
 			</div>
 		</div>

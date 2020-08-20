@@ -319,28 +319,35 @@ footer{
  *
  */
 .book-comments-form{
-	width: 90%;
-	margin-left: 30px;
+	width: 100%;
 
 	.my-comment-area{
 		height: 100px;
-		width: 100%;
-		margin-top: 10px;
+		width: 95%;
+		margin: 1% 0 0 2%;
 	}
 
 	.user-nickname{
 		word-break: break-all;	/* 文字列自動折り返し */
 	}
 
+	.book-comment-info{
+		margin: 10px 0;
+
+		.btn{
+			margin: 0 3% 1% 0;
+		}
+	}
+
 	.commented-form{
 		margin: 10px 0;
 
-		.comment-field{
-			margin: 10px 0 0 10px;
+		.row{
+			margin: 0;
 		}
 
-		.book-comment-info{
-			margin: 10px 0;
+		.comment-field{
+			margin: 10px 0 0 10px;
 		}
 
 		.child-comment-info{
@@ -616,6 +623,86 @@ footer{
 		.book_image, .no_book_image{
 			width: 42px;
 			height: 62px;
+		}
+	}
+
+	.book-show-form{
+		margin-bottom: 10px;
+
+		h2{
+			margin: 10px 0;
+		}
+
+		h4{
+			margin: 0;
+		}
+
+		.book-sidebar{
+			.book_image{
+				width: 42px;
+				height: 62px;
+			}
+		}
+
+		.book-sidebar-block{
+			padding: 0 5px;
+		}
+
+		.book-comment-block{
+			padding: 0 0px;
+		}
+	}
+
+	.book-status-form{
+		margin: 10px 0;
+		.book-status-item{
+			font-size: 8px;
+			padding: 3px;
+		}
+	}
+
+	.book-comments-form{
+		.profile_image{
+			width: 25px;
+			height: 25px;
+		}
+
+		.book-comment-info{
+			.my-comment-area{
+				font-size: 8px;
+			}
+
+			.book_comment_btn{
+				margin: 0;
+				width: 100%;
+			}
+
+			.spoiler, .spoiler_comment, .comment_submit{
+				padding: 0;
+
+				.btn{
+					font-size: 8px;
+				}
+			}
+		}
+
+
+	}
+
+	.comment_nice_form{
+		.btn{
+			padding: 0 5px;
+		}
+	}
+
+	.book-child-comment-info{
+		.input-child-book{
+			font-size: 8px;
+		}
+
+		.btn{
+			padding: 0 5px;
+			font-size: 8px;
 		}
 	}
 
