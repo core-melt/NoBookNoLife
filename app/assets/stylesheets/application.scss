@@ -170,7 +170,7 @@ footer{
 			}
 
 			.actions{
-				margin: 30px 0;
+				margin: 5% 0 10% 0;
 				text-align: center;
 			}
 		}
@@ -566,7 +566,7 @@ footer{
 		}
 	}
 
-	.user-edit-form{
+	.user-edit-form, .regstarations-new-form{
 		p{
 			margin: 3px 0;
 		}
@@ -575,28 +575,18 @@ footer{
 			width: 80%;
 		}
 
-		.nickname{
-			font-size: 8px;
-		}
-
-		.profile_image{
-			font-size: 8px;
-		}
-
-		.introduction{
-			font-size: 8px;
-		}
-
-		.user-email{
-			font-size: 8px;
-		}
-
-		.new-password{
+		.nickname, .profile_image, .introduction, .user-email, .new-password, .user-password{
 			font-size: 8px;
 		}
 
 		em{
 			font-size: 8px;
+		}
+
+		.actions{
+			.btn{
+				font-size: 8px;
+			}
 		}
 
 		.button-field{
@@ -612,6 +602,12 @@ footer{
 			margin: 0 25%;
 
 			.btn{
+				font-size: 8px;
+			}
+		}
+
+		.shared-links{
+			a{
 				font-size: 8px;
 			}
 		}
@@ -705,6 +701,7 @@ footer{
 			font-size: 8px;
 		}
 	}
+
 
 }
 
