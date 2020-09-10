@@ -1,24 +1,48 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## コンセプト
+読書感想または読み終えた後のアウトプットを行い知識として定着させ、他の人間とも感想を共有できるようにしました。
 
-Things you may want to cover:
+## 作成したきっかけ
+テーマ選定で時間がかかると考えていたため趣味である読書をテーマに作成することを決めました。
 
-* Ruby version
+## サービス詳細
+①ユーザー登録/編集機能
+②本の検索機能（本および作者名検索、最大40冊）
+③読書状態の登録/変更機能（読みたい本/積読本/読んでいる本/読了）
+④期間中の読書数のグラフ化
+⑤本棚機能
+⑥読書感想の投稿機能
+⑦他投稿への投稿/いいね機能
+⑧他ユーザーのフォロー機能
 
-* System dependencies
+## 開発環境
+### OS
+Linux(Ubuntu)
 
-* Configuration
+### 言語
+HTML,CSS,JavaScript,Ruby,SQL
 
-* Database creation
+### フレームワーク
+Ruby on Rails
 
-* Database initialization
+### Railsライブラリ
+* bootstrap-sass
+* chartkick
+* devise
+* dotenv-rails
+* httpclient
+* pry-byebug
+* refile
+* refile-mini_magick
 
-* How to run the test suite
+### JSライブラリ
 
-* Services (job queues, cache servers, search engines, etc.)
+### インフラ
+AWS(EC2,RDS,EIP)
 
-* Deployment instructions
+### テストフレームワーク
 
-* ...
+### その他ツールなど
+* Google Book API
+* Google Natural Language API
